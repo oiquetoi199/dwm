@@ -3,9 +3,7 @@
 #include "include/unfloat.c"
 #include "include/movestack.c"
 #include "include/fibonacci.c"
-#include "include/tatami.c"
 #include "include/centeredmaster.c"
-#include "include/deck.c"
 #include "include/inplacerotate.c"
 /* appearance */
 static int focusonwheel		    = 1;
@@ -57,10 +55,7 @@ static const Layout layouts[] = {
 	/* symbol     arrange function */
 	{ "[T]",      tile },    /* first entry is default */
 	{ "[M]",      monocle },
-    { "[D]",      deck},
     { "[@]",      spiral },
-    { "[\\]",     dwindle },
-	{ "[+]",      tatami },
 	{ "[C]",      centeredmaster },
 	{ NULL,       NULL },
 };
@@ -95,7 +90,7 @@ static const Key keys[] = {
 	{ MODKEY,                       XK_o,      incnmaster,     {.i = -1 } },
 	{ MODKEY,                       XK_h,      setmfact,       {.f = -0.02} },
 	{ MODKEY|ShiftMask,             XK_h,      setmfact,       {.f = +0.02} },
-	{ MODKEY|ShiftMask,             XK_Return, zoom,           {0} },
+	{ MODKEY,                       XK_space,  zoom,           {0} },
 	{ MODKEY,                       XK_Tab,    view,           {0} },
 	{ MODKEY,                       XK_w,      killclient,     {0} },
 	{ MODKEY,                       XK_t,      setlayout,      {.v = &layouts[0]} },
@@ -114,7 +109,6 @@ static const Key keys[] = {
 	{ MODKEY|ShiftMask,             XK_k,      movestack,      {.i = -1 } },
 	{ MODKEY|ShiftMask,             XK_l,      inplacerotate,  {.i = +1 } },
 	{ MODKEY,                       XK_l,      inplacerotate,  {.i = -1 } },
-    { MODKEY,                       XK_space,  fullscreen,     {0} },
     { MODKEY,                       XK_m,      spawn,          SHCMD("xdotool click 5") },
     { MODKEY,                       XK_n,      spawn,          SHCMD("xdotool click 4") },
 	{ 0, XF86XK_AudioRaiseVolume ,		   spawn, {.v = (const char *[]){ "amixer", "sset", "Master", "10%+", NULL }}},

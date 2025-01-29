@@ -1,4 +1,4 @@
-static void deck(Monitor *m);
+//static void deck(Monitor *m);
 
 void
 deck(Monitor *m) {
