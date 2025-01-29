@@ -1,0 +1,21 @@
+build/
+
+# Bỏ qua thư mục biên dịch (build)
+build/
+
+# Bỏ qua các file tạm thời của editor (ví dụ vim, emacs, nano)
+*~
+*.swp
+
+# Bỏ qua các file biên dịch (object files, executables)
+*.o
+*.a
+*.so
+*.out
+
+# Bỏ qua các file log
+*.log
+
+# Bỏ qua các file cache của Git (như .gitmodules)
+*.gitmodules
+
