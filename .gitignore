@@ -1,7 +1,6 @@
 build/
 
 # Bỏ qua thư mục biên dịch (build)
-build/
 
 # Bỏ qua các file tạm thời của editor (ví dụ vim, emacs, nano)
 *~
