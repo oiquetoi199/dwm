@@ -12,7 +12,8 @@ build/
 *.a
 *.so
 *.out
-
+*.rej
+*.orig
 # Bỏ qua các file log
 *.log
 
