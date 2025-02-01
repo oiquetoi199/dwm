@@ -3,7 +3,7 @@
 #include "include/unfloat.c"
 #include "include/movestack.c"
 #include "include/fibonacci.c"
-#include "include/centeredmaster.c"
+//#include "include/centeredmaster.c"
 #include "include/inplacerotate.c"
 #include "include/grid.c"
 /* appearance */
@@ -49,9 +49,6 @@ static const Rule rules[] = {
 	{ "kalk"      ,NULL,      NULL,      0,            1,          0,         -1},          
 	/* class     instance  title           tags mask  isfloating  isterminal  noswallow  monitor */
 	{ "Alacritty", NULL,     NULL,           0,         0,          1,           0,        -1 },
-
-
-	
 };
 
 /* layout(s) */
@@ -62,10 +59,9 @@ static const int lockfullscreen = 0; /* 1 will force focus on the fullscreen win
 static const Layout layouts[] = {
 	/* symbol     arrange function */
 	{ "[T]",      tile },    /* first entry is default */
-	{ "[M]",      monocle },
     { "[@]",      spiral },
-	{ "[C]",      centeredmaster },
     { "[G]",      grid },
+	{ "[M]",      monocle },
 	{ NULL,       NULL },
 };
 
@@ -89,8 +85,8 @@ static const char *thunar[] = { "thunar", NULL};
 static const char scratchpadname[] = "Scratchpad";
 static const char *scratchpadcmd[] = { "st", "-t", scratchpadname, "-g", "85x24", NULL };
 static const Key keys[] = {
+
 	/* modifier                     key        function        argument */
-    
 	{ MODKEY,                       XK_d,      spawn,          {.v = roficmd } },
 //	{ MODKEY,                       XK_d,      spawn,          {.v = dmenucmd } },
 	{ MODKEY,                       XK_Return, spawn,          {.v = termcmd } },
@@ -124,6 +120,9 @@ static const Key keys[] = {
     { MODKEY,                       XK_n,      spawn,          SHCMD("xdotool click 4") },
     { MODKEY,                       XK_e,      spawn,          {.v = thunar} },
     { MODKEY,                       XK_grave,  togglescratch,  {.v = scratchpadcmd } },
+	{ MODKEY|ShiftMask,             XK_m,      setcfact,       {.f = +0.15} },
+	{ MODKEY|ShiftMask,             XK_n,      setcfact,       {.f = -0.15} },
+	{ MODKEY|ShiftMask,             XK_b,      setcfact,       {.f =  0.00} },
 	{ 0, XF86XK_AudioRaiseVolume ,		   spawn, {.v = (const char *[]){ "amixer", "sset", "Master", "10%+", NULL }}},
 	{ 0,  XF86XK_AudioLowerVolume , spawn, {.v = (const char *[]){ "amixer", "sset", "Master", "10%-", NULL }}},
 	{ 0, XF86XK_AudioMute , spawn, {.v = (const char *[]){ "amixer", "sset", "Master", "toggle", NULL }}},
@@ -137,7 +136,7 @@ static const Key keys[] = {
 	TAGKEYS(                        XK_8,                      7)
 	TAGKEYS(                        XK_9,                      8)
 	{ MODKEY|ShiftMask,             XK_e,      quit,           {0} },
-	{ MODKEY|ShiftMask, 		XK_r,      quit,           {1} },
+	{ MODKEY|ShiftMask, 	    	XK_r,      quit,           {1} },
 };
 
 /* button definitions */
