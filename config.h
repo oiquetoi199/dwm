@@ -37,11 +37,12 @@ static const Rule rules[] = {
 	 */
 	/* class      instance    title      tags mask     isfloating  noswallow  monitor */
 	{ "Java"      ,NULL,      NULL,      0,    	   1,          0,         -1 },
-	{ "Viewnior"      ,NULL,      NULL,      0,    	   1,          0,         -1 },
+	{ "Orage"     ,NULL,      NULL,      0,    	   1,          0,         -1 },
+	{ "Viewnior"  ,NULL,      NULL,      0,    	   1,          0,         -1 },
 	{ "SpringToolSuite4","SpringToolSuite4","Spring Tool Suite 4 Launcher ",0,1,0 -1 },
 	{ "kalk"      ,NULL,      NULL,      0,            1,          0,         -1},          
 	/* class     instance  title           tags mask  isfloating  isterminal  noswallow  monitor */
-	{ "Alacritty",    NULL,     NULL,           0,         0,          1,           0,        -1 },
+	{ "Alacritty", NULL,     NULL,           0,         0,          1,           0,        -1 },
 
 
 	
@@ -78,6 +79,8 @@ static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont,
 static const char *roficmd[] = { "rofi", "-show", "drun", "-theme", "dmenu", NULL };
 static const char *termcmd[]  = { "alacritty", NULL };
 static const char *thunar[] = { "thunar", NULL};
+static const char scratchpadname[] = "scratchpad";
+static const char *scratchpadcmd[] = { "alacritty", "-t", scratchpadname, "-g", "85x24", NULL };
 static const Key keys[] = {
 	/* modifier                     key        function        argument */
     
@@ -113,6 +116,7 @@ static const Key keys[] = {
     { MODKEY,                       XK_m,      spawn,          SHCMD("xdotool click 5") },
     { MODKEY,                       XK_n,      spawn,          SHCMD("xdotool click 4") },
     { MODKEY,                       XK_e,      spawn,          {.v = thunar} },
+    { MODKEY,                       XK_grave,  togglescratch,  {.v = scratchpadcmd } },
 	{ 0, XF86XK_AudioRaiseVolume ,		   spawn, {.v = (const char *[]){ "amixer", "sset", "Master", "10%+", NULL }}},
 	{ 0,  XF86XK_AudioLowerVolume , spawn, {.v = (const char *[]){ "amixer", "sset", "Master", "10%-", NULL }}},
 	{ 0, XF86XK_AudioMute , spawn, {.v = (const char *[]){ "amixer", "sset", "Master", "toggle", NULL }}},
