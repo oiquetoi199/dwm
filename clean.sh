@@ -1,5 +1,5 @@
 #!/bin/bash
-extensions=("*.rej" "*.orig")
+extensions=("*.rej" "*.orig" "*.swp")
 
 directory=$(dirname "$0")
 
