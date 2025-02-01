@@ -5,6 +5,7 @@ build/
 # Bỏ qua các file tạm thời của editor (ví dụ vim, emacs, nano)
 *~
 *.swp
+*.swo
 
 # Bỏ qua các file biên dịch (object files, executables)
 *.o
