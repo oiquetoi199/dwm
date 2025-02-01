@@ -5,6 +5,7 @@
 #include "include/fibonacci.c"
 #include "include/centeredmaster.c"
 #include "include/inplacerotate.c"
+#include "include/grid.c"
 /* appearance */
 static int focusonwheel		    = 1;
 static int swallowfloating	    = 0; /* 0 để bỏ qua floating windows, 1 để swallow */
@@ -12,7 +13,7 @@ static const unsigned int borderpx  = 1;        /* border pixel of windows */
 static const unsigned int snap      = 32;       /* snap pixel */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
-static const char *fonts[]          = { "Iosevka:size=14" };
+static const char *fonts[]          = { "Iosevka:bold:size=14" };
 static const char dmenufont[]       = "monospace:size=14";
 static const char col_gray1[]       = "#222222";
 static const char col_gray2[]       = "#444444";
@@ -59,6 +60,7 @@ static const Layout layouts[] = {
 	{ "[M]",      monocle },
     { "[@]",      spiral },
 	{ "[C]",      centeredmaster },
+    { "[G]",      grid },
 	{ NULL,       NULL },
 };
 
@@ -79,8 +81,8 @@ static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont,
 static const char *roficmd[] = { "rofi", "-show", "drun", "-theme", "dmenu", NULL };
 static const char *termcmd[]  = { "alacritty", NULL };
 static const char *thunar[] = { "thunar", NULL};
-static const char scratchpadname[] = "scratchpad";
-static const char *scratchpadcmd[] = { "alacritty", "-t", scratchpadname, "-g", "85x24", NULL };
+static const char scratchpadname[] = "Scratchpad";
+static const char *scratchpadcmd[] = { "st", "-t", scratchpadname, "-g", "85x24", NULL };
 static const Key keys[] = {
 	/* modifier                     key        function        argument */
     
