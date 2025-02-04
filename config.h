@@ -4,6 +4,7 @@
 #include "include/movestack.c"
 #include "include/fibonacci.c"
 //#include "include/centeredmaster.c"
+//#include "include/viewnext.c"
 #include "include/inplacerotate.c"
 #include "include/grid.c"
 /* appearance */
@@ -11,8 +12,13 @@ static int focusonwheel		    = 1;
 static int swallowfloating	    = 0; /* 0 để bỏ qua floating windows, 1 để swallow */
 static const unsigned int borderpx  = 1;        /* border pixel of windows */
 static const unsigned int snap      = 32;       /* snap pixel */
-static const int showbar            = 1;        /* 0 means no bar */
-static const int topbar             = 1;        /* 0 means bottom bar */
+static const unsigned int systraypinning = 0;   /* 0: sloppy systray follows selected monitor, >0: pin systray to monitor X */
+static const unsigned int systrayonleft = 0;   	/* 0: systray in the right corner, >0: systray on left of status text */
+static const unsigned int systrayspacing = 2;   /* systray spacing */
+static const int systraypinningfailfirst = 1;   /* 1: if pinning fails, display systray on the first monitor, False: display systray on the last monitor*/
+static const int showsystray        = 1;     /* 0 means no systray */
+static const int showbar            = 1;     /* 0 means no bar */
+static const int topbar             = 1;     /* 0 means bottom bar */
 static const char *fonts[]          = { "Iosevka:bold:size=14" };
 static const char dmenufont[]       = "monospace:size=14";
 static const char col_gray1[]       = "#222222";
@@ -47,6 +53,8 @@ static const Rule rules[] = {
 	{ "Viewnior"  ,NULL,      NULL,      0,    	   1,          0,         -1 },
 	{ "SpringToolSuite4","SpringToolSuite4","Spring Tool Suite 4 Launcher ",0,1,0 -1 },
 	{ "kalk"      ,NULL,      NULL,      0,            1,          0,         -1},          
+   	{ "Blueman-manager"      ,NULL,      NULL,      0,            1,          0,         -1},          
+
 	/* class     instance  title           tags mask  isfloating  isterminal  noswallow  monitor */
 	{ "Alacritty", NULL,     NULL,           0,         0,          1,           0,        -1 },
 };
@@ -101,8 +109,8 @@ static const Key keys[] = {
 	{ MODKEY,                       XK_Tab,    view,           {0} },
 	{ MODKEY,                       XK_w,      killclient,     {0} },
 	{ MODKEY,                       XK_t,      setlayout,      {.v = &layouts[0]} },
-	{ MODKEY,			            XK_a,      cyclelayout,    {.i = -1 } },
-	{ MODKEY,       	            XK_s,      cyclelayout,    {.i = +1 } },
+	{ MODKEY|ShiftMask,	            XK_a,      cyclelayout,    {.i = -1 } },
+	{ MODKEY|ShiftMask, 	        XK_s,      cyclelayout,    {.i = +1 } },
 	{ MODKEY,	                    XK_f,	   togglefloating, {0} },
 	{ MODKEY,                       XK_0,      view,           {.ui = ~0 } },
 	{ MODKEY|ShiftMask,             XK_0,      tag,            {.ui = ~0 } },

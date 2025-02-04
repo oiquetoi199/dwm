@@ -2,5 +2,8 @@
 nitrogen --restore &
 picom &
 xfce4-power-manager &
+nm-applet &
+volumeicon &
+ibus restart
 slstatus &
 
