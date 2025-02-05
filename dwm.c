@@ -1313,8 +1313,16 @@ manage(Window w, XWindowAttributes *wa)
 	updatewindowtype(c);
 	updatesizehints(c);
 	updatewmhints(c);
-	c->x = c->mon->mx + 50;
-	c->y = c->mon->my + 50;
+//	c->x = c->mon->mx + 950;
+//	c->y = c->mon->my + 50;
+    if (strstr(c->name, "Scratchpad")) {
+	c->x = c->mon->mx + 950;
+ 	c->y = c->mon->my + 50;
+    }
+    else{
+    c->x = c->mon->mx + (c->mon->mw - WIDTH(c)) / 2;
+    c->y = c->mon->my + (c->mon->mh - HEIGHT(c)) / 2;
+    }
 	XSelectInput(dpy, w, EnterWindowMask|FocusChangeMask|PropertyChangeMask|StructureNotifyMask);
 	grabbuttons(c, 0);
 	if (!c->isfloating)
